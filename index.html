@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Un regalo para Mía ❤️</title>
+<title>Algo especial para Mía ❤️</title>
 
 <style>
 * {
@@ -13,8 +13,9 @@
 }
 
 body {
-  background: #321018;
-  color: #fff4df;
+  background:
+    radial-gradient(ellipse at top, #32164d 0%, #150d20 45%, #08070c 100%);
+  color: #f4eaff;
   font-family: Georgia, serif;
   overflow-x: hidden;
 }
@@ -28,6 +29,7 @@ body {
   padding: 30px 18px;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
 
 .screen.active {
@@ -41,9 +43,10 @@ body {
 }
 
 h1 {
-  color: #f4d59b;
+  color: #d8a7ff;
   font-size: clamp(32px, 8vw, 48px);
   margin-bottom: 20px;
+  text-shadow: 0 0 25px #a855f766;
 }
 
 p {
@@ -51,16 +54,16 @@ p {
 }
 
 .subtitle {
-  max-width: 450px;
+  max-width: 460px;
   font-size: 17px;
   margin-bottom: 28px;
-  color: #f1d9d0;
+  color: #d8c5e9;
 }
 
 button {
-  background: #e9c27e;
-  color: #481c22;
-  border: none;
+  background: linear-gradient(135deg, #a855f7, #7135b5);
+  color: white;
+  border: 1px solid #d9a7ff88;
   border-radius: 30px;
   padding: 16px 28px;
   font-size: 15px;
@@ -68,33 +71,59 @@ button {
   cursor: pointer;
   transition: .3s;
   font-family: Georgia, serif;
+  box-shadow: 0 0 25px #9333ea55;
 }
 
 button:hover {
   transform: scale(1.06);
-  background: #ffe1a8;
+  box-shadow: 0 0 35px #b76aff99;
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: default;
 }
 
 .small {
   font-size: 13px;
-  color: #d9bdb2;
+  color: #aa91bf;
   margin-top: 25px;
 }
 
-.snow {
+.sparkle {
   position: fixed;
-  top: -10px;
-  color: white;
+  top: -15px;
+  color: #d9a7ff;
   pointer-events: none;
   z-index: 10;
-  animation: fall linear infinite;
+  text-shadow: 0 0 12px #c084fc;
+  animation: fall linear forwards;
 }
 
 @keyframes fall {
-  to { transform: translateY(110vh); }
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
 }
 
-/* CAJA */
+/* CORAZÓN */
+
+.heart {
+  font-size: 85px;
+  margin: 20px;
+  animation: heartbeat 1.8s infinite;
+  filter: drop-shadow(0 0 20px #b65cff);
+}
+
+@keyframes heartbeat {
+  0%, 100% {transform: scale(1);}
+  15% {transform: scale(1.12);}
+  30% {transform: scale(1);}
+  45% {transform: scale(1.1);}
+}
+
+/* REGALO */
 
 .gift {
   font-size: 115px;
@@ -102,6 +131,7 @@ button:hover {
   cursor: pointer;
   animation: bounce 2s infinite;
   transition: .5s;
+  filter: drop-shadow(0 0 18px #a855f7);
 }
 
 @keyframes bounce {
@@ -118,13 +148,12 @@ button:hover {
 .letter-section {
   width: 100%;
   max-width: 720px;
-  background:
-    linear-gradient(rgba(255,248,228,.96),rgba(239,222,190,.97));
-  color: #53382a;
+  background: linear-gradient(145deg, #21152d, #130e1c);
+  color: #eee0fa;
   padding: clamp(25px, 6vw, 55px);
-  border: 5px double #b59a70;
-  border-radius: 5px;
-  box-shadow: 0 15px 50px #17090c;
+  border: 2px solid #9b5bd5;
+  border-radius: 18px;
+  box-shadow: 0 15px 55px #0009, 0 0 30px #8b35c533;
   text-align: left;
   margin: 20px auto;
 }
@@ -133,32 +162,36 @@ button:hover {
   font-family: cursive;
   text-align: center;
   font-size: 35px;
-  color: #74333a;
+  color: #d8a7ff;
   margin-bottom: 30px;
+  text-shadow: 0 0 15px #a855f755;
 }
 
 .letter-section p {
   font-size: 17px;
   line-height: 2;
   margin: 18px 0;
+  color: #e2d2ef;
 }
 
 .signature {
   text-align: right;
   font-family: cursive;
   font-size: 25px !important;
-  color: #81343e;
+  color: #d8a7ff !important;
   margin-top: 35px !important;
 }
 
 .photo {
   width: 100%;
   max-width: 360px;
-  background: white;
+  background: #21152d;
   padding: 10px 10px 35px;
   margin: 22px auto;
   display: block;
-  box-shadow: 0 5px 15px #0003;
+  border: 1px solid #a855f7;
+  border-radius: 8px;
+  box-shadow: 0 5px 25px #0008, 0 0 18px #9333ea33;
   transform: rotate(-2deg);
 }
 
@@ -166,6 +199,7 @@ button:hover {
   width: 100%;
   height: 230px;
   object-fit: cover;
+  border-radius: 4px;
 }
 
 .gallery {
@@ -181,14 +215,26 @@ button:hover {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  background: #eee0c5;
-  border: 7px solid white;
-  box-shadow: 0 5px 15px #0005;
+  background: #21152d;
+  border: 3px solid #a855f7;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px #0008, 0 0 15px #9333ea44;
+  transition: .3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.04);
 }
 
 .final-title {
   font-size: 38px;
-  color: #f4d59b;
+  color: #d8a7ff;
+}
+
+.final-heart {
+  font-size: 55px;
+  margin-top: 20px;
+  filter: drop-shadow(0 0 18px #b65cff);
 }
 
 @media(max-width: 450px) {
@@ -200,28 +246,27 @@ button:hover {
 
 <body>
 
-<div id="snow"></div>
-
 <!-- PANTALLA 1 -->
 <section class="screen active" id="welcome">
 
-  <div style="font-size:65px;margin-bottom:20px">🎄</div>
+  <div class="heart">💜</div>
 
-  <h1>¡Mía, Papá Noel<br>tiene algo para vos!</h1>
+  <h1>Mía, hice algo<br>especial para vos.</h1>
 
   <p class="subtitle">
-    Este año tengo preparado un regalo muy especial
-    para una persona que significa muchísimo.
-    Espero que te guste esta pequeña sorpresa...
+    Quería prepararte una pequeña sorpresa,
+    algo diferente que tuviera un poquito de mí
+    y de todo el cariño que te tengo.
+    Espero que te guste.
   </p>
 
   <button onclick="goTo('delivery')">
-    RECIBIR MI REGALO 🎁
+    TENGO ALGO PARA VOS 💜
   </button>
 
   <p class="small">
-    Entrega especial para: Mía<br>
-    De parte de: Papá Noel, con muchísimo cariño ❤️
+    Una sorpresa hecha especialmente para Mía.<br>
+    Con muchísimo cariño, Agus.
   </p>
 
 </section>
@@ -229,17 +274,17 @@ button:hover {
 <!-- PANTALLA 2 -->
 <section class="screen" id="delivery">
 
-  <h1>¡Tu regalo llegó, Mía!</h1>
+  <h1>Esto es para vos, Mía.</h1>
 
   <p class="subtitle">
-    Preparé algo muy especial para vos,
-    con muchísimo cariño.
+    No es un regalo cualquiera.
+    Preparé algo que quiero que leas con mucho cariño.
   </p>
 
   <div class="gift" id="gift" onclick="openGift()">🎁</div>
 
   <button id="openButton" onclick="openGift()">
-    ABRIR MI CARTA ❤️
+    ABRIR MI CARTA 💜
   </button>
 
 </section>
@@ -249,25 +294,27 @@ button:hover {
 
   <div class="letter-section">
 
-    <h2>Para vos, Mía ❤️</h2>
+    <h2>Para vos, Mía 💜</h2>
 
     <p>Mi querida Mía:</p>
 
     <p>
-      No sabés las ganas que tenía de hacerte algo así.
-      Quería regalarte algo diferente, algo que no fuera
-      simplemente un regalo más de Navidad, sino algo
-      que pudieras guardar y volver a mirar cada vez
-      que quisieras recordar lo importante que sos para mí.
+      La verdad es que no sé muy bien por dónde empezar,
+      porque hay tantas cosas que quisiera decirte
+      que a veces siento que ninguna palabra alcanza.
+      Pero quería hacerte algo especial, algo que no fuera
+      simplemente un mensaje más, sino algo que puedas
+      guardar y volver a leer cuando quieras.
     </p>
 
     <p>
-      A veces siento que las palabras no alcanzan para
-      explicar todo lo que una persona puede significar
-      en tu vida. Y aunque quizás no siempre encuentre
-      la manera perfecta de demostrarlo, quiero que sepas
-      que te quiero muchísimo y que agradezco de corazón
-      haberte encontrado.
+      Primero que nada, quiero que sepas cuánto te amo.
+      Te amo muchísimo, más de lo que muchas veces
+      puedo explicar. Sos una persona increíblemente
+      importante para mí y me hace muy feliz tenerte
+      en mi vida. Desde que estás conmigo, hay momentos
+      que se volvieron mucho más lindos simplemente
+      porque los comparto con vos.
     </p>
 
     <!-- FOTO 1 -->
@@ -276,19 +323,20 @@ button:hover {
     </div>
 
     <p>
-      Me encanta poder compartir momentos con vos,
-      las conversaciones, las risas, las pequeñas cosas
-      y todos esos recuerdos que fuimos creando.
-      Porque muchas veces no hace falta hacer algo
-      extraordinario para que un momento sea especial.
-      A veces alcanza con que estés vos.
+      Gracias por estar, por acompañarme, por escucharme,
+      por hacerme reír y por cada pequeño detalle que
+      quizás para vos parece algo normal, pero que para mí
+      significa muchísimo. Gracias por ser parte de mis días
+      y por regalarme tantos momentos que me encanta recordar.
     </p>
 
     <p>
-      Quiero que sepas que sos una persona muy importante
-      para mí. Me encanta tu forma de ser, los detalles
-      que te hacen única y esa manera que tenés de hacer
-      que algunos días sean mucho más lindos.
+      Me encanta tu forma de ser, tu personalidad,
+      tus ocurrencias, tu manera de hablar y todas esas
+      pequeñas cosas que te hacen ser vos. No quiero que
+      cambies nada de lo que te hace especial.
+      Para mí sos una persona hermosa y quiero que
+      nunca te olvides de lo mucho que valés.
     </p>
 
     <!-- FOTO 2 -->
@@ -297,45 +345,70 @@ button:hover {
     </div>
 
     <p>
-      No sé qué nos espera más adelante, pero sí sé que
-      me hace muy feliz tenerte en mi vida y que quiero
-      seguir compartiendo momentos, creando recuerdos
-      y descubriendo muchísimas cosas juntos.
+      Si hay algo que agradezco muchísimo es poder
+      compartir mi vida con vos. Me gustan nuestras
+      conversaciones, nuestras risas, los momentos
+      juntos y hasta esas pequeñas cosas que quizás
+      parecen insignificantes, pero que terminan
+      convirtiéndose en recuerdos hermosos.
     </p>
 
     <p>
-      Esta Navidad quería darte algo que no se pudiera
-      envolver con papel de regalo. Algo que tuviera
-      un poquito de mí y de todo el cariño que te tengo.
+      Quiero seguir conociéndote cada día un poquito más,
+      seguir aprendiendo de vos, acompañarte en tus días
+      buenos y también en los no tan buenos.
+      Quiero que siempre puedas sentir que tenés a alguien
+      que te quiere, te escucha y te valora muchísimo.
     </p>
 
     <p>
-      Ojalá cuando leas esto puedas sentir, aunque sea
-      un poquito, todo lo que intento transmitirte
-      con estas palabras.
+      Sé que no somos perfectos y que la vida no siempre
+      es fácil, pero para mí lo importante es poder
+      compartir las cosas, hablar, entendernos y seguir
+      construyendo momentos lindos juntos.
+      No necesito que todo sea perfecto para ser feliz
+      con vos.
     </p>
 
     <p>
-      Gracias por cada momento, por cada sonrisa
-      y por formar parte de mi vida.
-      Espero que esta sea una de muchas Navidades
-      en las que podamos compartir momentos especiales.
+      Ojalá nunca dudes de lo importante que sos para mí.
+      Si alguna vez no encuentro las palabras para
+      demostrarte todo lo que siento, quiero que vuelvas
+      a leer esto y recuerdes que hay alguien que te ama
+      muchísimo y que está muy agradecido de tenerte.
     </p>
 
     <p>
-      Nunca te olvides de lo especial que sos
-      y de lo mucho que te quiero.
+      Gracias por cada sonrisa, cada abrazo, cada charla,
+      cada recuerdo y por ser parte de mi historia.
+      No sabés lo feliz que me hace poder decir
+      que sos mi novia y que tengo la suerte de compartir
+      tantas cosas con vos.
+    </p>
+
+    <p>
+      Te amo por quien sos, por lo que compartimos
+      y por todas esas pequeñas cosas que hacen
+      que seas tan especial para mí.
+      Espero que nos queden muchísimos recuerdos
+      más por crear.
+    </p>
+
+    <p>
+      Nunca te olvides de lo mucho que te amo,
+      de lo importante que sos y de lo agradecido
+      que estoy por tenerte en mi vida.
     </p>
 
     <p class="signature">
-      Con muchísimo cariño,<br>
-      Agus ❤️
+      Con todo mi amor,<br>
+      Agus 💜
     </p>
 
   </div>
 
   <h1 style="font-size:34px;margin-top:35px">
-    Nuestros recuerdos ❤️
+    Nuestros recuerdos 💜
   </h1>
 
   <p class="subtitle">
@@ -349,19 +422,19 @@ button:hover {
     <img src="fotos/foto6.jpeg" alt="Nuestro recuerdo 6">
   </div>
 
-  <h1 class="final-title">Feliz Navidad, Mía ❤️</h1>
+  <h1 class="final-title">Te amo, Mía 💜</h1>
 
   <p class="subtitle">
-    Y si pudiera pedir un deseo esta Navidad,
-    sería que nunca nos falten motivos para
-    seguir creando recuerdos juntos.
+    Gracias por estar en mi vida,
+    por hacerme tan feliz y por ser esa persona
+    con la que quiero seguir creando recuerdos.
   </p>
 
-  <p style="color:#f4d59b;font-family:cursive;font-size:25px">
-    Con cariño, Agus.
+  <p style="color:#d8a7ff;font-family:cursive;font-size:25px">
+    Siempre con cariño, Agus.
   </p>
 
-  <div style="font-size:50px;margin-top:20px">❤️</div>
+  <div class="final-heart">💜</div>
 
 </section>
 
@@ -392,22 +465,22 @@ function openGift() {
   }, 700);
 }
 
-// NIEVE
-function createSnow() {
-  const snow = document.createElement('div');
-  snow.className = 'snow';
-  snow.innerHTML = '❄';
-  snow.style.left = Math.random() * 100 + 'vw';
-  snow.style.fontSize = (10 + Math.random() * 15) + 'px';
-  snow.style.opacity = Math.random();
-  snow.style.animationDuration = (5 + Math.random() * 8) + 's';
+// PARTÍCULAS VIOLETAS
+function createSparkle() {
+  const sparkle = document.createElement('div');
+  sparkle.className = 'sparkle';
+  sparkle.innerHTML = Math.random() > 0.5 ? '✦' : '✧';
+  sparkle.style.left = Math.random() * 100 + 'vw';
+  sparkle.style.fontSize = (10 + Math.random() * 15) + 'px';
+  sparkle.style.opacity = Math.random();
+  sparkle.style.animationDuration = (5 + Math.random() * 8) + 's';
 
-  document.body.appendChild(snow);
+  document.body.appendChild(sparkle);
 
-  setTimeout(() => snow.remove(), 13000);
+  setTimeout(() => sparkle.remove(), 13000);
 }
 
-setInterval(createSnow, 350);
+setInterval(createSparkle, 450);
 
 </script>
 
