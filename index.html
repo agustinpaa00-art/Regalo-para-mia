@@ -13,8 +13,7 @@
 }
 
 body {
-  background:
-    radial-gradient(ellipse at top, #32164d 0%, #150d20 45%, #08070c 100%);
+  background: radial-gradient(ellipse at top, #32164d 0%, #150d20 45%, #08070c 100%);
   color: #f4eaff;
   font-family: Georgia, serif;
   overflow-x: hidden;
@@ -90,6 +89,8 @@ button:disabled {
   margin-top: 25px;
 }
 
+/* PARTÍCULAS */
+
 .sparkle {
   position: fixed;
   top: -15px;
@@ -123,15 +124,73 @@ button:disabled {
   45% {transform: scale(1.1);}
 }
 
-/* REGALO */
+/* REGALO VIOLETA */
 
 .gift {
-  font-size: 115px;
-  margin: 20px;
+  width: 125px;
+  height: 110px;
+  position: relative;
+  margin: 45px auto 35px;
   cursor: pointer;
   animation: bounce 2s infinite;
+  filter: drop-shadow(0 0 20px #a855f7);
   transition: .5s;
-  filter: drop-shadow(0 0 18px #a855f7);
+}
+
+.gift-box {
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+  width: 115px;
+  height: 78px;
+  background: linear-gradient(135deg, #7926b5, #40116b);
+  border: 2px solid #c084fc;
+  border-radius: 5px;
+}
+
+.gift-box::before {
+  content: "";
+  position: absolute;
+  left: 45px;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(90deg, #d8b4fe, #a855f7);
+}
+
+.gift-lid {
+  position: absolute;
+  top: 17px;
+  left: 0;
+  width: 125px;
+  height: 25px;
+  background: linear-gradient(135deg, #a855f7, #6b21a8);
+  border: 2px solid #d8b4fe;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+.gift-bow {
+  position: absolute;
+  top: -13px;
+  left: 48px;
+  width: 30px;
+  height: 25px;
+  border: 6px solid #d8b4fe;
+  border-radius: 50% 50% 10% 50%;
+  transform: rotate(-25deg);
+  z-index: 3;
+}
+
+.gift-bow::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 25px;
+  border: 6px solid #d8b4fe;
+  border-radius: 50% 50% 50% 10%;
+  left: 10px;
+  top: -7px;
+  transform: rotate(50deg);
 }
 
 @keyframes bounce {
@@ -181,6 +240,8 @@ button:disabled {
   color: #d8a7ff !important;
   margin-top: 35px !important;
 }
+
+/* FOTOS */
 
 .photo {
   width: 100%;
@@ -281,7 +342,11 @@ button:disabled {
     Preparé algo que quiero que leas con mucho cariño.
   </p>
 
-  <div class="gift" id="gift" onclick="openGift()">🎁</div>
+  <div class="gift" id="gift" onclick="openGift()">
+    <div class="gift-bow"></div>
+    <div class="gift-lid"></div>
+    <div class="gift-box"></div>
+  </div>
 
   <button id="openButton" onclick="openGift()">
     ABRIR MI CARTA 💜
@@ -317,7 +382,6 @@ button:disabled {
       porque los comparto con vos.
     </p>
 
-    <!-- FOTO 1 -->
     <div class="photo">
       <img src="fotos/foto1.jpeg" alt="Un recuerdo nuestro">
     </div>
@@ -339,7 +403,6 @@ button:disabled {
       nunca te olvides de lo mucho que valés.
     </p>
 
-    <!-- FOTO 2 -->
     <div class="photo">
       <img src="fotos/foto2.jpeg" alt="Otro recuerdo nuestro">
     </div>
