@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Un regalo para Mía ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #321018;
+  color: #fff4df;
+  font-family: Georgia, serif;
+  overflow-x: hidden;
+}
+
+.screen {
+  min-height: 100vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px 18px;
+  text-align: center;
+  position: relative;
+}
+
+.screen.active {
+  display: flex;
+  animation: appear 1s ease;
+}
+
+@keyframes appear {
+  from {opacity: 0; transform: translateY(15px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+h1 {
+  color: #f4d59b;
+  font-size: clamp(32px, 8vw, 48px);
+  margin-bottom: 20px;
+}
+
+p {
+  line-height: 1.8;
+}
+
+.subtitle {
+  max-width: 450px;
+  font-size: 17px;
+  margin-bottom: 28px;
+  color: #f1d9d0;
+}
+
+button {
+  background: #e9c27e;
+  color: #481c22;
+  border: none;
+  border-radius: 30px;
+  padding: 16px 28px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+  font-family: Georgia, serif;
+}
+
+button:hover {
+  transform: scale(1.06);
+  background: #ffe1a8;
+}
+
+.small {
+  font-size: 13px;
+  color: #d9bdb2;
+  margin-top: 25px;
+}
+
+.snow {
+  position: fixed;
+  top: -10px;
+  color: white;
+  pointer-events: none;
+  z-index: 10;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
+
+/* CAJA */
+
+.gift {
+  font-size: 115px;
+  margin: 20px;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+  transition: .5s;
+}
+
+@keyframes bounce {
+  50% {transform: translateY(-12px);}
+}
+
+.gift.open {
+  transform: scale(1.5) rotate(15deg);
+  opacity: 0;
+}
+
+/* CARTA */
+
+.letter-section {
+  width: 100%;
+  max-width: 720px;
+  background:
+    linear-gradient(rgba(255,248,228,.96),rgba(239,222,190,.97));
+  color: #53382a;
+  padding: clamp(25px, 6vw, 55px);
+  border: 5px double #b59a70;
+  border-radius: 5px;
+  box-shadow: 0 15px 50px #17090c;
+  text-align: left;
+  margin: 20px auto;
+}
+
+.letter-section h2 {
+  font-family: cursive;
+  text-align: center;
+  font-size: 35px;
+  color: #74333a;
+  margin-bottom: 30px;
+}
+
+.letter-section p {
+  font-size: 17px;
+  line-height: 2;
+  margin: 18px 0;
+}
+
+.signature {
+  text-align: right;
+  font-family: cursive;
+  font-size: 25px !important;
+  color: #81343e;
+  margin-top: 35px !important;
+}
+
+.photo {
+  width: 100%;
+  max-width: 360px;
+  background: white;
+  padding: 10px 10px 35px;
+  margin: 22px auto;
+  display: block;
+  box-shadow: 0 5px 15px #0003;
+  transform: rotate(-2deg);
+}
+
+.photo img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  width: 100%;
+  max-width: 650px;
+  margin: 25px auto;
+}
+
+.gallery img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: #eee0c5;
+  border: 7px solid white;
+  box-shadow: 0 5px 15px #0005;
+}
+
+.final-title {
+  font-size: 38px;
+  color: #f4d59b;
+}
+
+@media(max-width: 450px) {
+  .gallery img {height: 130px;}
+  .letter-section p {font-size: 16px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NIEVE -->
+<div id="snow"></div>
+
+<!-- PANTALLA 1 -->
+<section class="screen active" id="welcome">
+
+  <div style="font-size:65px;margin-bottom:20px">🎄</div>
+
+  <h1>¡Mía, Papá Noel<br>tiene algo para vos!</h1>
+
+  <p class="subtitle">
+    Este año tengo preparado un regalo muy especial
+    para una persona que significa muchísimo.
+    Espero que te guste esta pequeña sorpresa...
+  </p>
+
+  <button onclick="goTo('delivery')">
+    RECIBIR MI REGALO 🎁
+  </button>
+
+  <p class="small">
+    Entrega especial para: Mía<br>
+    De parte de: Papá Noel, con muchísimo cariño ❤️
+  </p>
+
+</section>
+
+<!-- PANTALLA 2 -->
+<section class="screen" id="delivery">
+
+  <h1>¡Tu regalo llegó, Mía!</h1>
+
+  <p class="subtitle">
+    Preparé algo muy especial para vos,
+    con muchísimo cariño.
+  </p>
+
+  <div class="gift" id="gift" onclick="openGift()">🎁</div>
+
+  <button id="openButton" onclick="openGift()">
+    ABRIR MI CARTA ❤️
+  </button>
+
+</section>
+
+<!-- PANTALLA 3 -->
+<section class="screen" id="letter">
+
+  <div class="letter-section">
+
+    <h2>Para vos, Mía ❤️</h2>
+
+    <p>Mi querida Mía:</p>
+
+    <p>
+      No sabés las ganas que tenía de hacerte algo así.
+      Quería regalarte algo diferente, algo que no fuera
+      simplemente un regalo más de Navidad, sino algo
+      que pudieras guardar y volver a mirar cada vez
+      que quisieras recordar lo importante que sos para mí.
+    </p>
+
+    <p>
+      A veces siento que las palabras no alcanzan para
+      explicar todo lo que una persona puede significar
+      en tu vida. Y aunque quizás no siempre encuentre
+      la manera perfecta de demostrarlo, quiero que sepas
+      que te quiero muchísimo y que agradezco de corazón
+      haberte encontrado.
+    </p>
+
+    <!-- FOTO 1 -->
+    <div class="photo">
+      <img src="fotos/foto1.jpg" alt="Un recuerdo nuestro">
+    </div>
+
+    <p>
+      Me encanta poder compartir momentos con vos,
+      las conversaciones, las risas, las pequeñas cosas
+      y todos esos recuerdos que fuimos creando.
+      Porque muchas veces no hace falta hacer algo
+      extraordinario para que un momento sea especial.
+      A veces alcanza con que estés vos.
+    </p>
+
+    <p>
+      Quiero que sepas que sos una persona muy importante
+      para mí. Me encanta tu forma de ser, los detalles
+      que te hacen única y esa manera que tenés de hacer
+      que algunos días sean mucho más lindos.
+    </p>
+
+    <!-- FOTO 2 -->
+    <div class="photo">
+      <img src="fotos/foto2.jpg" alt="Otro recuerdo nuestro">
+    </div>
+
+    <p>
+      No sé qué nos espera más adelante, pero sí sé que
+      me hace muy feliz tenerte en mi vida y que quiero
+      seguir compartiendo momentos, creando recuerdos
+      y descubriendo muchísimas cosas juntos.
+    </p>
+
+    <p>
+      Esta Navidad quería darte algo que no se pudiera
+      envolver con papel de regalo. Algo que tuviera
+      un poquito de mí y de todo el cariño que te tengo.
+    </p>
+
+    <p>
+      Ojalá cuando leas esto puedas sentir, aunque sea
+      un poquito, todo lo que intento transmitirte
+      con estas palabras.
+    </p>
+
+    <p>
+      Gracias por cada momento, por cada sonrisa
+      y por formar parte de mi vida.
+      Espero que esta sea una de muchas Navidades
+      en las que podamos compartir momentos especiales.
+    </p>
+
+    <p>
+      Nunca te olvides de lo especial que sos
+      y de lo mucho que te quiero.
+    </p>
+
+    <p class="signature">
+      Con muchísimo cariño,<br>
+      Agus ❤️
+    </p>
+
+  </div>
+
+  <h1 style="font-size:34px;margin-top:35px">
+    Nuestros recuerdos ❤️
+  </h1>
+
+  <p class="subtitle">
+    Algunos momentos que quiero guardar siempre.
+  </p>
+
+  <div class="gallery">
+    <img src="fotos/foto3.jpg" alt="Nuestro recuerdo 3">
+    <img src="fotos/foto4.jpg" alt="Nuestro recuerdo 4">
+    <img src="fotos/foto5.jpg" alt="Nuestro recuerdo 5">
+    <img src="fotos/foto6.jpg" alt="Nuestro recuerdo 6">
+  </div>
+
+  <h1 class="final-title">Feliz Navidad, Mía ❤️</h1>
+
+  <p class="subtitle">
+    Y si pudiera pedir un deseo esta Navidad,
+    sería que nunca nos falten motivos para
+    seguir creando recuerdos juntos.
+  </p>
+
+  <p style="color:#f4d59b;font-family:cursive;font-size:25px">
+    Con cariño, Agus.
+  </p>
+
+  <div style="font-size:50px;margin-top:20px">❤️</div>
+
+</section>
+
+<script>
+
+// CAMBIAR DE PANTALLA
+function goTo(id) {
+  document.querySelectorAll('.screen').forEach(s => {
+    s.classList.remove('active');
+  });
+
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ABRIR REGALO
+let opened = false;
+
+function openGift() {
+  if (opened) return;
+  opened = true;
+
+  document.getElementById('gift').classList.add('open');
+  document.getElementById('openButton').disabled = true;
+
+  setTimeout(() => {
+    goTo('letter');
+  }, 700);
+}
+
+// NIEVE
+function createSnow() {
+  const snow = document.createElement('div');
+  snow.className = 'snow';
+  snow.innerHTML = '❄';
+  snow.style.left = Math.random() * 100 + 'vw';
+  snow.style.fontSize = (10 + Math.random() * 15) + 'px';
+  snow.style.opacity = Math.random();
+  snow.style.animationDuration = (5 + Math.random() * 8) + 's';
+
+  document.body.appendChild(snow);
+
+  setTimeout(() => snow.remove(), 13000);
+}
+
+setInterval(createSnow, 350);
+
+</script>
+
+</body>
+</html>
